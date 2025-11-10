@@ -1,7 +1,7 @@
 <?php
 
-require_once(DIR . "/../controllers/HomeController.php");
-require_once(DIR . "/../controllers/NotFoundController.php");
+require_once(__DIR__ . "/../controllers/HomeController.php");
+require_once(__DIR__ . "/../controllers/NotFoundController.php");
 
 
 class Router
