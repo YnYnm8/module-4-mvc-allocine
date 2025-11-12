@@ -1,5 +1,6 @@
 <?php
 require_once(__DIR__ . "/../models/FilmModel.php");
+require_once(__DIR__ . "/../models/DiffusionModel.php");
 // Remplacez Name par le nom du controller
 class FilmController
 {
@@ -15,7 +16,8 @@ class FilmController
             // ou bien la méthode par défaut...
         }
     }
-    public function meiko($params = []){
+    public function meiko($params = [])
+    {
         echo "AUtre route";
     }
     public function detail($params = [])
@@ -25,17 +27,22 @@ class FilmController
 
         // ✅ $params[0] に ID が入っている想定
         $id = isset($params[0]) ? (int)$params[0] : null;
-        console($id);
+        // console($id);
         if (!$id) {
             echo "映画IDが指定されていません。";
             return;
         }
 
         $film = $filmModel->get($id);
+
+        $diffusionModel = new DiffusionModel();
+        $diffusion = $diffusionModel->get($film->getId());
+        console($diffusion);
         
+
         require_once(__DIR__ . "/../views/detail.php");
     }
-    public function delete(){
-        echo"Delete";
-    }
+    // public function delete(){
+    //     echo"Delete";
+    // }
 }

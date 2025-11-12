@@ -5,6 +5,7 @@ require_once(__DIR__ . "/../controllers/NotFoundController.php");
 require_once(__DIR__ . "/../controllers/FilmController.php");
 
 
+
 class Router
 {
     public static function getController(string $controllerName)
@@ -17,9 +18,10 @@ class Router
                 break;
 
             case 'film':
-                 return new FilmController();
-                 break;
-                
+                return new FilmController();
+                break;
+
+
 
             default:
                 // Si aucune route de match

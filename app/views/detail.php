@@ -15,11 +15,18 @@
              <h1>Detail de Cinema</h1>
             <img src="<?= $film->getCover(); ?>" alt="">
             <p>Titre: <?= $film->getNom(); ?></p>
-            <p>Titre: <?= $film->getSynopsis(); ?></p> -->
+            <p>Titre: <?= $film->getSynopsis(); ?></p> 
         <?php else: ?>
             <p><?=   "指定された映画が見つかりません。" ?></p>
         <?php endif;?>
+       <h2>Séance</h2>
+       
 
+        <?php foreach ($diffusion as $dif): ?>
+          
+            <p><?= $dif->getDate_diffusion();?></p>
+            <?php endforeach; ?>
+            
     </div>
 </body>
 
