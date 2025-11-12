@@ -17,7 +17,7 @@ class App
         $controllerName = isset($uri_elements[1]) ? $uri_elements[1] : "";
         $methodName = isset($uri_elements[2]) ? $uri_elements[2] :"";
         $params = array_splice($uri_elements, 3);
-
+        console($params);
         // Je récupère le controller
         $controller = Router::getController($controllerName);
 

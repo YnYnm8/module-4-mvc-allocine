@@ -19,7 +19,7 @@ class FilmModel
         $this->bdd = new PDO("mysql:host=bdd;dbname=allocine", "root", "root");
 
         // Adaptez cette requête à votre table Film
-        $this->addFilm = $this->bdd->prepare("INSERT INTO `Film` (nom, date_sortie, genre, auteur, cover) VALUES (:nom, :date_sortie, :genre, :auteur,:cover)");
+        $this->addFilm = $this->bdd->prepare("INSERT INTO `Film` (nom, date_sortie, genre, auteur, cover,synopsis) VALUES (:nom, :date_sortie, :genre, :auteur,:cover,:synopsis)");
 
         $this->delFilm = $this->bdd->prepare("DELETE FROM `Film` WHERE `id` = :id;");
 
@@ -58,7 +58,8 @@ class FilmModel
             $rawFilm["date_sortie"],
             $rawFilm["genre"],
             $rawFilm["auteur"],
-            $rawFilm["cover"]
+            $rawFilm["cover"],
+            $rawFilm["synopsis"]
         );
     }
 
@@ -76,7 +77,8 @@ class FilmModel
                 $rawFilm["date_sortie"],
                 $rawFilm["genre"],
                 $rawFilm["auteur"],
-                $rawFilm["cover"]
+                $rawFilm["cover"],
+                $rawFilm["synopsis"]
             );
         }
 
@@ -122,8 +124,9 @@ class FilmEntity
     private string $genre;
     private string $auteur;
     private string $cover;
+    private string $synopsis;
     // private $columnName;
-    function __construct(int $id, string $nom, string $date_sortie, string $genre, string $auteur, string $cover)
+    function __construct(int $id, string $nom, string $date_sortie, string $genre, string $auteur, string $cover,string $synopsis)
     {
         // $this->setColumnName($columnName);
         $this->id = $id;
@@ -132,6 +135,7 @@ class FilmEntity
         $this->setGenre($genre);
         $this->setAuteur($auteur);
         $this->setCover($cover);
+        $this->setSynopsis($synopsis);
     }
 
     public function setNom(string $nom)
@@ -154,6 +158,10 @@ class FilmEntity
         public function setCover(string $cover)
     {
         return $this->cover = $cover;
+    }
+    public function setSynopsis(string $synopsis)
+    {
+        return $this->synopsis = $synopsis;
     }
 
     public function getId(): int
@@ -180,4 +188,9 @@ class FilmEntity
     {
         return $this->cover;
     }
+    public function getSynopsis(): string
+    {
+        return $this->synopsis;
+    }
+   
 }

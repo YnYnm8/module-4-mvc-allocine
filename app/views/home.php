@@ -16,6 +16,8 @@
             <p>Genre: <?= $film->getGenre(); ?> </p>
             <p>Auteur: <?= $film->getAuteur(); ?> </p>
             <img src="<?= $film->getCover(); ?>" alt="">
+           <a href="film/detail/<?= $film-> getId(); ?>">Detil</a>
+
 
         <?php endforeach; ?>
     </div>
